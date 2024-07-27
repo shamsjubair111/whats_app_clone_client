@@ -1,0 +1,23 @@
+.chatListStyle{
+    background-color: #128c7e;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    padding: 20px;
+
+
+}
+
+.chatListStyle :hover{
+    background-color: #128c7e;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+  
+    
+}

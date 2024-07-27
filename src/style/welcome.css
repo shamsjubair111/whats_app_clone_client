@@ -1,0 +1,13 @@
+.welcomeCss{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    color: #128c7e;
+}
+
+.btnPosition{
+    display: flex;
+    justify-content: space-evenly;
+}

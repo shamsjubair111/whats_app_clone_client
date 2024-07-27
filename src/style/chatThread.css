@@ -1,0 +1,26 @@
+.main-div{
+   
+   
+   
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    
+}
+
+
+
+.chatSection{
+
+    height: 80vh;
+    background-color: #ece5dd;
+    width: 100%;
+    
+}
+
+.messageInputArea{
+
+ width: 100%;
+    
+    
+}
