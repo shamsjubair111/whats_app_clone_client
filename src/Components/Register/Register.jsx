@@ -23,6 +23,7 @@ export const Register = () => {
           axios.post('http://localhost:5000/createUser',userDetails)
           .then(res => {
             if(res?.status === 200){
+                alert("Registered Successfully");
              navigate("/login");
             }
           })

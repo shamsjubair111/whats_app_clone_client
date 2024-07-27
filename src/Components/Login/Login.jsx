@@ -24,6 +24,7 @@ export const Login = () => {
        if(res?.data){
         localStorage.setItem("registered",res?.data);
         localStorage.setItem("sender",userDetails?.userName);
+        alert("Logged in successfully");
         navigate("/");
         window.location.reload();
        

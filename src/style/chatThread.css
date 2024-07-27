@@ -24,3 +24,28 @@
     
     
 }
+
+.sender{
+
+    background-color: #ffffff;
+    color: black;
+    border-radius: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+ 
+
+}
+
+
+.receiver{
+    background-color: #D9FDD3;
+    color: black;
+    border-radius: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}

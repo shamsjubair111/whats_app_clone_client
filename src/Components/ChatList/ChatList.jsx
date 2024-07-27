@@ -7,12 +7,12 @@ export const ChatList = ({users, updateReceiver}) => {
   
   return (
     
-    <div className='mt-2'>
+    <div className='mt-2 hoverstyle'>
 
         {
             users?.map(singleUser => (
-                <div className='chatListStyle' key={singleUser?._id}>
-                    <h2 onClick={()=> updateReceiver(singleUser)}>{singleUser?.userName}</h2>
+                <div className='chatListStyle' key={singleUser?._id} onClick={()=> updateReceiver(singleUser)}>
+                    <h2>{singleUser?.userName}</h2>
                 </div>
             ))
         }

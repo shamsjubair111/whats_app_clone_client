@@ -1,11 +1,12 @@
 .chatListStyle{
-    background-color: #128c7e;
+    background-color: #ffffff;
     color: black;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 5px;
-    padding: 20px;
+    height: 56px;
+  
 
 
 }
@@ -20,4 +21,8 @@
  
   
     
+}
+
+.hoverstyle :hover{
+    cursor: pointer;
 }

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import "../../style/chatThread.css"
 import axios from 'axios';
-import { getOverflowOptions } from 'antd/es/_util/placements';
+
 
 export const ChatThread = ({messageSender, messageReceiver}) => {
 
-  const [message,setMessage] = useState(null);
+  const [message,setMessage] = useState('');
   const [chatData,setChatData] = useState([]);
+  const [updateChat, setUpdateChat] = useState(false);
+
 
   const sender = localStorage.getItem('sender');
  
@@ -31,7 +33,7 @@ export const ChatThread = ({messageSender, messageReceiver}) => {
 
     
 
-  },[messageReceiver])
+  },[messageReceiver, updateChat])
 
   console.log(messageReceiver, messageSender);
 
@@ -49,12 +51,19 @@ export const ChatThread = ({messageSender, messageReceiver}) => {
       time: `${hours}:${minutes}:${seconds}`
     }
 
-    axios.post("http://localhost:5000/sendMessage",messageDetails)
-    .then(res =>{
-      console.log(res?.data);
-    
-    
-    })
+    if(messageReceiver !== null && message.length >0){
+      axios.post("http://localhost:5000/sendMessage",messageDetails)
+      .then(res =>{
+        console.log(res?.data);
+        setMessage('');
+        setUpdateChat(!updateChat);
+        alert('message sent successfully');
+       
+      })
+    }
+    else{
+      alert("Enter your text in the input box");
+    }
  
   }
 
@@ -70,10 +79,10 @@ export const ChatThread = ({messageSender, messageReceiver}) => {
 
       {
         chatData?.map(individualChats => (
-          <div key={individualChats?._id} className={(sender === individualChats?.sender)? 'mx-3 my-5 d-flex justify-content-end' : 'mx-3 my-5 d-flex justify-content-start'}>
-            <h5>
+          <div key={individualChats?._id} className={(sender === individualChats?.sender)? 'mx-3 my-4 d-flex justify-content-end' : 'mx-3 my-5 d-flex justify-content-start'}>
+            <span className={(sender === individualChats?.sender)? 'receiver' : 'sender'}>
               {individualChats?.content}
-          </h5>
+          </span>
             </div>
         ))
       }
@@ -83,14 +92,19 @@ export const ChatThread = ({messageSender, messageReceiver}) => {
     <div className='messageInputArea me-3'>
     <div class="my-3">
    
-    <textarea class="form-control" onBlur={(e)=>{
+    <textarea class="form-control" onChange={(e)=>{
       setMessage(e.target.value);
       
-    }} id="exampleFormControlTextarea1" rows="3"></textarea>
+    }} id="exampleFormControlTextarea1" rows="3" value={message}></textarea>
     </div>
 
     <div className='mb-3 d-flex justify-content-between' >
     <button type="button" onClick={createNewContact} class="btn btn-secondary px-3 py-2">Add New Contact</button>
+    <button type="button" onClick={() =>{
+            localStorage.removeItem("registered");
+            localStorage.removeItem('sender');
+            window.location.reload();
+    }} class="btn btn-danger px-3 py-2">Log Out</button>
     <button type="button" onClick={sendMessage} class="btn btn-success px-3 py-2">Send Message</button>
     </div>
 
